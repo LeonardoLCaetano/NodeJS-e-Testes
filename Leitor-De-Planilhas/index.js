@@ -56,7 +56,7 @@ async function TrackData() {
         return response;
     })
 
-    return console.log('Dados copiados com sucesso!')
+    return console.log('Dados copiados com sucesso!.')
 }
 
 TrackData();
