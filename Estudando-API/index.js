@@ -1,76 +1,55 @@
-//FUNÇÕES DE REQUISIÇÕES.
+// Função assíncrona para enviar dados via método POST
 async function postData(url = '', data = {}) {
-
+  // Faz uma requisição POST para a URL fornecida com os dados fornecidos
   const response = await fetch(url, {
-
-    method: 'POST', // *GET, POST, PUT, DELETE, etc.
-
+    method: 'POST', // Define o método HTTP como POST
     headers: {
-
-      'Content-Type': 'application/json'
-
+      'Content-Type': 'application/json' 
     },
-
-
-    body: JSON.stringify(data)
-
+    body: JSON.stringify(data) 
   });
 
   return response.json();
-
 }
 
+// Função assíncrona para enviar dados via método PUT
 async function putData(url = '', data = {}) {
-
+  // Faz uma requisição PUT para a URL fornecida com os dados fornecidos
   const response = await fetch(url, {
-
-    method: 'PUT', // *GET, POST, PUT, DELETE, etc
-
+    method: 'PUT', // Define o método HTTP como PUT
     headers: {
-
-      'Content-Type': 'application/json'
-
+      'Content-Type': 'application/json' 
     },
-
-    body: JSON.stringify(data)
-
+    body: JSON.stringify(data) 
   });
 
   return response.json();
-
 }
 
+// Função assíncrona para enviar dados via método DELETE
 async function deleteData(url = '', data = {}) {
-
+  // Faz uma requisição DELETE para a URL fornecida com os dados fornecidos
   const response = await fetch(url, {
-
-    method: 'DELETE', // *GET, POST, PUT, DELETE, etc
-
+    method: 'DELETE', // Define o método HTTP como DELETE
     headers: {
-
-      'Content-Type': 'application/json'
-
+      'Content-Type': 'application/json' 
     },
-
-    body: JSON.stringify(data)
-
+    body: JSON.stringify(data) 
   });
 
   return response.json();
- 
 }
 
-//A FUNÇÃO GET IRÁ EXIBIR NO CONSOLE AS PROPRIEDADES DOS OBJETOS.
+// Função para obter dados da API
 function Get() {
-
+  // Faz uma requisição GET para a URL fornecida
   return fetch('https://apigenerator.dronahq.com/api/KNRZQIRL/testes_api')
-
-    .then((response) => response.json())
-
+    .then((response) => response.json()) 
     .then((data) => {
-
       console.log('Lista de objetos: ')
       data.forEach((carro) => {
+
+        // Imprime detalhes de cada carro no console
         console.log('Marca: ' + carro.Marca);
         console.log('Modelo: ' + carro.Modelo);
         console.log('Categoria: ' + carro.Categoria);
@@ -78,23 +57,19 @@ function Get() {
         console.log('Km: ' + carro.km);
         console.log('Valor: ' + carro.valor);
         console.log('------------------------');
-
       });
     });
-
 }
 
-//ALGUNS OBJETOS FORAM PASSADOS PARA O BANCO DE DADOS ATRAVÉS DA FERRAMENTA DE TESTES E DESENVOLVIMENTO DE API'S INSOMNIA.
-// E OUTROS ADICIONADOS ATRAVÉS DO CÓDIGO PARA PRATICAR AMBAS AS FORMAS.
-
+// Objetos de exemplo para serem enviados para a API
 const objeto1 = {
-    "Marca": "Ford",
-    "Modelo": "Mustang",
-    "Categoria": "Esportivo",
-    "Ano": 2019,
-    "km": 16000,
-    "valor": 180000
-  }
+  "Marca": "Ford",
+  "Modelo": "Mustang",
+  "Categoria": "Esportivo",
+  "Ano": 2019,
+  "km": 16000,
+  "valor": 180000
+};
 
 const objeto2 = {
   "Marca": "Toyota",
@@ -103,26 +78,25 @@ const objeto2 = {
   "Ano": 2019,
   "km": 19000,
   "valor": 125000
-  }
+};
 
+// Envia objeto1 para a API usando postData
 postData('https://apigenerator.dronahq.com/api/KNRZQIRL/testes_api', objeto1)
-
   .then((data) => {
+    console.log(data); // Imprime a resposta da API
+    console.log('OBJETO ADICIONADO COM SUCESSO!');
+  });
 
-    console.log(data);
-    console.log('OBJETO ADICIONADO COM SUCESSO!')  
-
-});
-
+// Envia objeto2 para a API usando postData
 postData('https://apigenerator.dronahq.com/api/KNRZQIRL/testes_api', objeto2)
-
   .then((data) => {
+    console.log(data); // Imprime a resposta da API
+    console.log('OBJETO ADICIONADO COM SUCESSO!');
+  });
 
-    console.log(data);  
-    console.log('OBJETO ADICIONADO COM SUCESSO!')
-}); 
-
+// Chama a função Get para obter e imprimir os dados da API
 Get();
+
 
 
 
